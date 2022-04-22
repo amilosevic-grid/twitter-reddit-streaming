@@ -48,7 +48,7 @@ class TwitterKafkaProducer(
         try {
           val tweetData = tweet.getData
           val key = tweet.getData.getId.toLong
-          val msg = Tweet(tweetData.getId.toLong, tweetData.getText, tweetData.getLang, User(tweetData.getAuthorId.toLong, "author"))
+          val msg = Tweet(tweetData.getText, tweetData.getLang, User(tweetData.getAuthorId.toLong, "author"))
           val record = new ProducerRecord[Long, String](KafkaConfigurations.TOPIC, key, gson.toJson(msg))
           producer.send(record, callback)
           line = reader.readLine()
@@ -60,6 +60,7 @@ class TwitterKafkaProducer(
         }
       }
       streamResult.close()
+      println("making a break! :)")
       Thread.sleep(18000) // to spread out requests
     }
     catch {

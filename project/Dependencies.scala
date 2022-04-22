@@ -3,7 +3,8 @@ class Dependencies(versions: Versions) {
   lazy val spark: Seq[ModuleID] =
     "org.apache.spark" %% "spark-core" % versions.spark ::
     "org.apache.spark" %% "spark-sql" % versions.spark ::
-    "org.apache.spark" %% "spark-streaming" % versions.spark :: Nil
+    "org.apache.spark" %% "spark-streaming" % versions.spark ::
+    "org.apache.spark" %% "spark-sql-kafka-0-10" % versions.spark :: Nil
 
   lazy val kafka: Seq[ModuleID] =
     "org.apache.kafka" % "kafka-clients" % versions.kafka ::
