@@ -1,6 +1,6 @@
 import org.apache.spark.sql.SparkSession
 import org.apache.spark.sql.functions.{col, from_json}
-import org.apache.spark.sql.types.{StructField, StructType, StringType}
+import org.apache.spark.sql.types.{StringType, StructField, StructType}
 
 object TwitterSparkConsumer {
   private val spark: SparkSession = SparkSession.builder().master("local").getOrCreate()
