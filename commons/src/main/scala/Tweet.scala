@@ -1,1 +1,1 @@
-case class Tweet(text: String, lang: String, user: User)
+case class Tweet(text: String, lang: String, user: User, hashtags: Seq[String])

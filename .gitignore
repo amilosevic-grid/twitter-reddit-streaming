@@ -2,4 +2,4 @@
 .idea
 target
 */target
-*/commons/src/main/resources/application.conf
+commons/src/main/resources/application.conf
