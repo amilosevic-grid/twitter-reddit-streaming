@@ -34,12 +34,6 @@ object TwitterSparkConsumer {
         StructField("location", StringType, nullable = true)
       )
     )
-    val geoSchema = StructType(
-      List(
-        StructField("name", StringType, nullable = true),
-        StructField("location", StringType, nullable = true)
-      )
-    )
     val df = spark
       .readStream
       .format("kafka")
@@ -54,6 +48,7 @@ object TwitterSparkConsumer {
       .withColumn("user", from_json(col("user"), userSchema))
       .select("text", "lang", "hashtags", "country", "user.*")
       .writeStream
+      .queryName("twitter")
       .format("console")
       .trigger(Trigger.ProcessingTime("3 minutes"))
       .start()
